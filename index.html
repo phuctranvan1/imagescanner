@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlueScan OCR</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <h1>BlueScan OCR</h1>
+        <p>Upload or paste an image and extract key information in one click.</p>
+      </header>
+
+      <section class="card">
+        <h2>1) Provide an image</h2>
+        <div class="input-row">
+          <label class="btn upload-btn" for="imageInput">Upload image</label>
+          <input id="imageInput" type="file" accept="image/*" />
+          <button id="pasteBtn" class="btn secondary" type="button">Paste image</button>
+        </div>
+        <p class="helper">Tip: Click “Paste image” then press <kbd>Ctrl</kbd> + <kbd>V</kbd>.</p>
+        <div class="preview-wrap">
+          <img id="previewImage" alt="Uploaded preview" />
+          <p id="emptyPreview" class="muted">No image selected yet.</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>2) Choose information type</h2>
+        <div class="scan-options">
+          <label for="scanType">Scan for</label>
+          <select id="scanType">
+            <option value="all">All text</option>
+            <option value="name">Name</option>
+            <option value="date">Date</option>
+            <option value="amount">Amount</option>
+          </select>
+        </div>
+        <button id="scanBtn" class="btn" type="button">Extract text</button>
+        <p id="status" class="status muted">Ready when you are.</p>
+      </section>
+
+      <section class="card">
+        <h2>3) Result</h2>
+        <textarea
+          id="resultText"
+          readonly
+          placeholder="Extracted information will appear here..."
+        ></textarea>
+        <button id="copyBtn" class="btn" type="button">Copy to clipboard</button>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
